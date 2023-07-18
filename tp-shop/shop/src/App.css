@@ -1,0 +1,40 @@
+body{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.shop{
+  text-decoration: none;
+  font-weight: bold;
+}
+.shop:hover{
+  background-color: lightblue;
+  color: black;
+}
+center{
+  height: 250px;
+  padding: 90px;
+}
+.price{
+  text-decoration: line-through;
+}
+.footer{
+  height: 100px;
+  padding: 50px;
+}
+.h{
+  font-size: 2rem;
+  transition: font-size 0.5s ease;
+}
+.h:hover{
+  font-size: 4rem;
+}
+.card:hover{
+  box-shadow: 10px 1px 10px 10px darkgrey;
+}
+.btn{
+  color: rgb(112, 109, 109);
+}
+.btn:hover{
+  color: white;
+  background-color: gray;
+  transition-duration: 0.3s;
+}
