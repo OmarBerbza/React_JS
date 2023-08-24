@@ -83,6 +83,10 @@ img{
   object-fit: cover;
 }
 
+.showPass:hover{
+  color: yellow;
+}
+
 /* FOOTER */
 footer{
   background-color: #1EA24F;

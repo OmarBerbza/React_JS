@@ -26,6 +26,10 @@
     {
         "id": "6",
         "ville": "Layoun"
+    },
+    {
+        "id": 7,
+        "ville": "Tiznit"
     }
     
 ]

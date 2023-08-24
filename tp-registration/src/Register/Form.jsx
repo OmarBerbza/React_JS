@@ -4,16 +4,19 @@ import cities from './Data/cities.json';
 import hobbies from './Data/hobbies.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from "react-router-dom";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
 function Form() {
     const [indentifiant, setIndetifiant] = useState('');
+    const [password, setPassword] = useState('');
     const [naissence, setNaissence] = useState('');
     const [ville, setVille] = useState('');
     const [genre, setGenre] = useState('');
     const [loisir, setLoisir] = useState([]);
     const [photo, setPhoto] = useState();
     const [preview, setPreview] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
     // const [formData, setFormData] = useState({indentifiant, naissence, ville, genre, loisir: loisir.languages, photo, preview})
@@ -21,7 +24,7 @@ function Form() {
     /* FOR FORM */
     const handleSubmit = (event)=> {
         event.preventDefault(); 
-        const formData = {indentifiant, naissence, ville, genre, loisir, photo, preview}
+        const formData = {indentifiant, password, naissence, ville, genre, loisir, photo, preview}
         navigate('/display', {state: formData});
     };
 
@@ -38,7 +41,10 @@ function Form() {
         }
       };
       
-      
+      /* VISUAL THE PASSWORD */
+      const handleVisualPassword = ()=>{
+        setShowPassword(!showPassword);
+      }
 
     /* DISPLAY IMAGE */
     const fileInputRef = useRef();
@@ -85,12 +91,12 @@ function Form() {
 
                         <div className="mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label"><b>Indentifiant</b></label>
-                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e)=>setIndetifiant(e.target.value)} />
+                            <input type="text" onChange={(e)=>setIndetifiant(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label"><b>Mot de passe</b></label>
-                            <input type="password" className="form-control" id="exampleInputPassword1"/>
+                            <input type="password" onChange={(e)=> setPassword(e.target.value)} className="form-control" id="exampleInputPassword1"/>
                         </div>
 
                         <div className="mb-3">
@@ -142,6 +148,17 @@ function Form() {
 
                     <div className="p-4">
                         <h4>Le nom: <span className='checking'> {indentifiant} </span></h4>
+                        <h4>Mot de passe: 
+                            {showPassword? (
+                                <span className='checking'>{password}</span>
+                            ):(
+                                password.split('').map((char, index) => <span key={index} className='checking'> x </span>)
+                            )}
+                        </h4>
+                        <p className='showPass' onClick={handleVisualPassword}>
+                            {showPassword? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+                        </p>   
+
                         <h4>Né le: <span className='checking'> {naissence} </span></h4>
                         <h4>Localisation:<span className='checking'> {ville} </span></h4>
                         <h4>Genre :<span className='checking'> {genre} </span></h4>
