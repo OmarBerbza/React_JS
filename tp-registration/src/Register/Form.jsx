@@ -168,7 +168,7 @@ function Form() {
 
                         <h4>Photo:</h4>
                         {preview && (
-                            <img src={preview} alt="Preview" />
+                            <img src={preview} alt={indentifiant} />
                         )}
                     </div>
 

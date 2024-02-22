@@ -45,7 +45,7 @@ function DisplayForm() {
           Photo: 
           <br /> <br />
           {fromData.preview && (
-            <img src={fromData.preview} alt="Preview" />
+            <img src={fromData.preview} alt={fromData.indentifiant} />
           )}
         </p>
         
